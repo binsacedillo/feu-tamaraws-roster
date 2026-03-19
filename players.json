@@ -1,0 +1,73 @@
+[
+  {
+    "id": "player-19",
+    "number": "19",
+    "firstName": "Amet",
+    "lastName": "Bituin",
+    "position": "Outside Hitter",
+    "height": "185 cm",
+    "portrait": "/images/players/player-19/portrait.jpg",
+    "action": "/images/players/player-19/action.jpg",
+    "isCaptain": true
+  },
+  {
+    "id": "player-03",
+    "number": "03",
+    "firstName": "Ariel",
+    "lastName": "Cacao",
+    "position": "Setter",
+    "height": "174 cm",
+    "portrait": "/images/players/player-03/portrait.jpg",
+    "action": "/images/players/player-03/action.jpg"
+  },
+  {
+    "id": "player-05",
+    "number": "05",
+    "firstName": "Mikko",
+    "lastName": "Espartero",
+    "position": "Outside Hitter",
+    "height": "188 cm",
+    "portrait": "/images/players/player-05/portrait.jpg",
+    "action": "/images/players/player-05/action.jpg"
+  },
+  {
+    "id": "player-09",
+    "number": "09",
+    "firstName": "Dryx",
+    "lastName": "Saavedra",
+    "position": "Opposite Hitter",
+    "height": "192 cm",
+    "portrait": "/images/players/player-09/portrait.jpg",
+    "action": "/images/players/player-09/action.jpg"
+  },
+  {
+    "id": "player-11",
+    "number": "11",
+    "firstName": "Lirick",
+    "lastName": "Mendoza",
+    "position": "Middle Blocker",
+    "height": "197 cm",
+    "portrait": "/images/players/player-11/portrait.jpg",
+    "action": "/images/players/player-11/action.jpg"
+  },
+  {
+    "id": "player-15",
+    "number": "15",
+    "firstName": "Doula",
+    "lastName": "Ndongala",
+    "position": "Middle Blocker",
+    "height": "201 cm",
+    "portrait": "/images/players/player-15/portrait.jpg",
+    "action": "/images/players/player-15/action.jpg"
+  },
+  {
+    "id": "player-1",
+    "number": "1",
+    "firstName": "Vennie",
+    "lastName": "Ceballos",
+    "position": "Libero",
+    "height": "170 cm",
+    "portrait": "/images/players/player-1/portrait.jpg",
+    "action": "/images/players/player-1/action.jpg"
+  }
+]

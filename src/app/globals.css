@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-feu-green: #007A33;
+  --color-feu-gold: #F1B523;
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+.viewport-spacer {
+  flex: 0 0 calc(50vw - 110px);
+}
+
+@media (min-width: 768px) {
+  .viewport-spacer {
+    flex: 0 0 calc(50vw - 140px);
+  }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-ticker {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+  animation-play-state: running;
+}
+
+.pause {
+  animation-play-state: paused !important;
+}
+
+.perspective-container {
+  perspective: 1000px;
+}
