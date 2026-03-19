@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     title: "FEU Tamaraws Elite Roster",
     description: "Modern, dynamic roster prototype for the FEU Tamaraws.",
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 
