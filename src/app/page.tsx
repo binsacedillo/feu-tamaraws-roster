@@ -59,6 +59,7 @@ export default function Home() {
     const handleScroll = () => {
       window.clearTimeout(isScrollingLine);
       isScrollingLine = setTimeout(() => {
+        if (!viewport) return;
         const viewportRect = viewport.getBoundingClientRect();
         const centerX = viewportRect.left + viewportRect.width / 2;
         const cards = viewport.querySelectorAll('.player-card-container');
@@ -66,7 +67,9 @@ export default function Home() {
         let closestId = focusedId;
         let minDistance = Infinity;
 
-        cards.forEach((card) => {
+        // Use standard loop for better performance
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i] as HTMLElement;
           const rect = card.getBoundingClientRect();
           const cardCenter = rect.left + rect.width / 2;
           const distance = Math.abs(centerX - cardCenter);
@@ -76,12 +79,13 @@ export default function Home() {
             const id = card.getAttribute('data-id');
             if (id) closestId = id;
           }
-        });
+          if (distance < 50) break; // Early exit if we found a very close one
+        }
 
         if (closestId !== focusedId) {
           setFocusedId(closestId);
         }
-      }, 50);
+      }, 100); // Increased debounce for smoother scroll performance
     };
 
     viewport.addEventListener('scroll', handleScroll);
@@ -104,9 +108,9 @@ export default function Home() {
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-white/5">
         <motion.div
-          className="h-full bg-feu-gold origin-left shadow-[0_0_10px_rgba(241,181,35,0.8)]"
+          className="h-full bg-feu-gold origin-left shadow-[0_0_10px_rgba(241,181,35,0.8)] will-change-transform"
           style={{ scaleX: scrollProgress / 100 }}
-          transition={{ ease: 'linear', duration: 0.1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
       </div>
       {/* Premium Background Layering */}
@@ -116,8 +120,8 @@ export default function Home() {
           style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #f1b523 1px, transparent 0)', backgroundSize: '40px 40px' }} 
         />
         
-        {/* Larger Mesh Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-feu-green/5 blur-[120px] rounded-full" />
+        {/* Larger Mesh Glow - Optimized opacity and blur for performance */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-feu-green/5 blur-[80px] rounded-full will-change-transform" />
         
         {/* Dynamic Watermark Layout */}
         <div className="absolute top-10 left-10 text-[15vw] font-black text-white/2 select-none leading-none">88</div>

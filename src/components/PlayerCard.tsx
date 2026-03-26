@@ -46,7 +46,6 @@ export default function PlayerCard({ player, focused, onClick }: PlayerCardProps
 
   return (
     <motion.div
-      layout
       role="button"
       aria-pressed={focused}
       aria-label={`Player profile: ${player.firstName} ${player.lastName}`}
@@ -55,21 +54,22 @@ export default function PlayerCard({ player, focused, onClick }: PlayerCardProps
       onClick={onClick}
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
       animate={{
-        scale: focused ? 1.1 : 0.85,
+        scale: focused ? 1.05 : 0.85,
         rotateY: focused ? 0 : 5,
-        filter: focused ? 'grayscale(0) brightness(1)' : 'grayscale(1) brightness(0.4)',
-        z: focused ? 50 : 0
+        opacity: focused ? 1 : 0.7,
+        z: focused ? 40 : 0
       }}
       transition={{ 
         type: 'spring', 
-        stiffness: 260, 
+        stiffness: 150, // Slightly reduced stiffness for smoother performance
         damping: 20,
-        layout: { duration: 0.6 }
       }}
-      className={`relative group flex-none w-[220px] md:w-[280px] h-[330px] md:h-[420px] rounded-[20px] overflow-hidden cursor-pointer border transition-all duration-700 outline-none focus-visible:ring-2 focus-visible:ring-feu-gold ${
-        focused ? 'border-feu-gold z-20 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7),0_0_20px_rgba(241,181,35,0.2)]' : 'border-white/5 z-0 grayscale'
+      className={`relative group flex-none w-[220px] md:w-[280px] h-[330px] md:h-[420px] rounded-[20px] overflow-hidden cursor-pointer border will-change-transform transition-[border-color,box-shadow,filter] duration-500 outline-none focus-visible:ring-2 focus-visible:ring-feu-gold ${
+        focused 
+          ? 'border-feu-gold z-20 shadow-[0_30px_60px_-12px_rgba(0,0,0,0.7),0_0_20px_rgba(241,181,35,0.2)] grayscale-0 brightness-100' 
+          : 'border-white/5 z-0 grayscale brightness-50'
       } bg-[#111] scroll-snap-align-center origin-center`}
     >
       <div className="absolute inset-0">
